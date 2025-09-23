@@ -1,3 +1,13 @@
+body {
+  display: grid;
+  place-items: center;
+}
+
+#root {
+  max-width: 1920px;
+  width: 100%;
+}
+
 @font-face {
   font-family: 'DM Sans';
   src: url('/assets/fonts/DM_Sans/static/DMSans-SemiBoldItalic.ttf') format('truetype');
@@ -97,6 +107,7 @@
 
   /*spacing*/
   --spacing-1400: 6.222rem;
+  --spacing-1000: 4.444rem;
   --spacing-800: 3.556rem;
   --spacing-600: 2.667rem;
   --spacing-400: 1.778rem;
@@ -104,4 +115,22 @@
   --spacing-250: 1.111rem;
   --spacing-200: 0.889rem;
   --spacing-150: 0.667rem;
+  --spacing-125: 0.555rem;
+  --spacing-100: 0.444rem;
+  --spacing-75: 0.333rem;
+  --spacing-50: 0.222rem;
+
+  /* corner radius */
+  --radius-24: 1.333rem;
+  --radius-20: 1.111rem;
+  --radius-16: 0.889rem;
+  --radius-12: 0.667rem;
+  --radius-10: 0.556rem;
+  --radius-8: 0.444rem;
+
+  /* breakpoints */
+  --breakpoint-mobile: 450px;
+
+  /* animations*/
+  --animate-spin-slow: spin 3s linear infinite;
 }
