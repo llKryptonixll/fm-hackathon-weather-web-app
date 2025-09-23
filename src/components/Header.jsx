@@ -41,7 +41,7 @@ const Header = () => {
   }
 
   return (
-    <header className="grid gap-800">
+    <header className="relative grid gap-800">
       <div className="relative flex items-center justify-between">
         <img src="/assets/images/logo.svg" alt="Weather Now Logo" />
         <div>
@@ -60,7 +60,7 @@ const Header = () => {
         How's the sky looking today? <span className="sr-only">Use your personal Weather web app</span>
       </h1>
       <div className="mobile:flex-row flex w-full flex-col justify-center gap-200">
-        <div className="relative grid w-full gap-150 md:max-w-[478px]">
+        <div className="relative flex w-full gap-150 md:max-w-[478px]">
           <label className="sr-only" htmlFor="search-input">
             {getPlaceholderText()}
           </label>

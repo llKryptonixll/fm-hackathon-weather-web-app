@@ -1,7 +1,7 @@
 const Dropdown = ({ variant, isOpen, locations, closeDropdown, getSelectedLocation }) => {
   const customScrollbarStyles =
     '[&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-blue-500'
-  const searchDropdownStyles = `${customScrollbarStyles} bg-neutral-800 top-16 w-full h-[164px] rounded-12 p-100 border-1 border-neutral-700 overflow-y-scroll`
+  const searchDropdownStyles = `${customScrollbarStyles} bg-neutral-800 absolute top-16 w-full h-[164px] rounded-12 p-100 border-1 border-neutral-700 overflow-y-scroll`
 
   function handleItemClick(location) {
     getSelectedLocation(location)
