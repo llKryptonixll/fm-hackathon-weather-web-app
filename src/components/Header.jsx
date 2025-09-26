@@ -55,11 +55,11 @@ const Header = () => {
   return (
     <header className="relative grid gap-800">
       <div className="relative flex items-center justify-between">
-        <img src="/assets/images/logo.svg" alt="Weather Now Logo" />
+        <img className="mobile:w-auto w-[138px]" src="/assets/images/logo.svg" alt="Weather Now Logo" />
         <div>
           <button
             onClick={() => toggleDropdown('units-dropdown')}
-            className="text-preset-7 text-neutral-0 rounded-8 focus:outline-neutral-0 flex cursor-pointer gap-125 bg-neutral-800 px-150 py-200 transition-colors hover:bg-neutral-700 focus:border-2 focus:border-neutral-900 focus:outline-2"
+            className="text-preset-7 text-neutral-0 rounded-8 focus:outline-neutral-0 mobile:px-150 mobile:py-200 flex cursor-pointer gap-125 bg-neutral-800 px-125 py-100 transition-colors hover:bg-neutral-700 focus:border-2 focus:border-neutral-900 focus:outline-2"
           >
             <img src="/assets/images/icon-units.svg" />
             <span>Units</span>
