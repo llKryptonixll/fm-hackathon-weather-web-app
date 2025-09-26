@@ -66,7 +66,7 @@ const Header = () => {
             <img src="/assets/images/icon-dropdown.svg" />
           </button>
         </div>
-        <Dropdown variant={'units-dropdown'} isOpen={dropdown === 'units-dropdown'} />
+        <Dropdown variant={'units-dropdown'} closeDropdown={closeDropdown} isOpen={dropdown === 'units-dropdown'} />
       </div>
       <h1 className="text-neutral-0 text-preset-2 font-Bricolage mobile:max-w-[400px] w-full max-w-[300px] justify-self-center text-center md:max-w-full">
         How's the sky looking today? <span className="sr-only">Use your personal Weather web app</span>

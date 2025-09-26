@@ -1,15 +1,36 @@
+import { useRef, useEffect } from 'react'
+
 const Dropdown = ({ variant, isOpen, locations, closeDropdown, getSelectedLocation }) => {
   const searchDropdownStyles =
-    'custom-scrollbar bg-neutral-800 absolute top-16 w-full h-[164px] rounded-12 p-100 border-1 border-neutral-700 overflow-y-scroll'
+    'custom-scrollbar bg-neutral-800 absolute top-16 w-full h-[184px] rounded-12 p-100 border-1 border-neutral-700 overflow-y-scroll'
+
+  const dropdownRef = useRef(null)
 
   function handleItemClick(location) {
     getSelectedLocation(location)
     closeDropdown('search-dropdown')
   }
 
+  function handleClickOutside(event) {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      closeDropdown('units-dropdown')
+    }
+  }
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside)
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [])
+
   if (variant === 'units-dropdown') {
     return isOpen ? (
-      <div className="rounded-12 absolute top-[55px] right-0 z-100 w-full max-w-[214px] border-1 border-neutral-600 bg-neutral-800 px-100 py-75 text-white">
+      <div
+        ref={dropdownRef}
+        className="rounded-12 absolute top-[55px] right-0 z-100 w-full max-w-[214px] border-1 border-neutral-600 bg-neutral-800 px-100 py-75 text-white"
+      >
         <button className="text-neutral-0 text-preset-7 px-100 py-125" id="unit-toggle" aria-pressed="false">
           Switch to Imperial
         </button>

@@ -1,12 +1,33 @@
+import { useState, useEffect } from 'react'
+import getWeather from '../services/getWeather'
+import { useContext } from 'react'
+import LocationContext from '../context/LocationContext'
+
 const MainWeatherCard = () => {
   const itemStyles =
     'bg-neutral-800 p-250 flex-1 rounded-12 items-center grid gap-300 border-1 border-neutral-600 leading-none mobile:basis-auto basis-[calc(50%-0.888rem)]'
 
-  return (
+  const [weather, setWeather] = useState(null)
+  const { selectedLocation } = useContext(LocationContext)
+  const { name, country, latitude, longitude } = selectedLocation
+
+  useEffect(() => {
+    async function fetchWeather() {
+      if (selectedLocation === '') return
+      const data = await getWeather(longitude, latitude) // Berlin coords
+      setWeather(data)
+    }
+
+    fetchWeather()
+  }, [selectedLocation])
+
+  console.log(weather)
+
+  return weather !== null ? (
     <section>
       <div className="rounded-20 font-DMsan mobile:flex-row mobile:justify-between mobile:bg-[url(/assets/images/bg-today-large.svg)] flex min-h-[286px] flex-col items-center justify-center bg-[url(/assets/images/bg-today-small.svg)] bg-cover bg-center bg-no-repeat px-300">
         <div className="mobile:text-left grid gap-150 text-center">
-          <h2 className="text-neutral-0 text-preset-4">Berlin, Germany</h2>
+          <h2 className="text-neutral-0 text-preset-4">{`${name}, ${country}`}</h2>
           <p className="text-neutral-0 text-preset-6 opacity-80">Tuesday, Aug 5, 2025</p>
         </div>
         <div className="flex items-center gap-250">
@@ -33,6 +54,8 @@ const MainWeatherCard = () => {
         </div>
       </dl>
     </section>
+  ) : (
+    <p>test</p>
   )
 }
 
