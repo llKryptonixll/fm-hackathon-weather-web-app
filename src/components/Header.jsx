@@ -24,8 +24,6 @@ const Header = () => {
     }
   }
 
-  console.log(dropdown)
-
   function handleSearchInput(event) {
     setQuery(event.target.value)
   }
@@ -36,8 +34,22 @@ const Header = () => {
     const data = await getLocation(query)
     setLocations(data)
     setIsLoading(false)
-    openDropdown('search-dropdown')
+    if (data?.results?.length > 0) {
+      openDropdown('search-dropdown')
+    } else {
+      closeDropdown('search-dropdown')
+    }
     setQuery('')
+  }
+
+  function checkResults() {
+    if (locations === null) {
+      return null
+    }
+
+    if (!locations.results || locations.results.length === 0) {
+      return <p className="text-neutral-0 text-preset-4 justify-self-center">No search result found!</p>
+    }
   }
 
   return (
@@ -47,7 +59,7 @@ const Header = () => {
         <div>
           <button
             onClick={() => toggleDropdown('units-dropdown')}
-            className="text-preset-6 text-neutral-0 rounded-8 focus:outline-neutral-0 flex cursor-pointer gap-125 bg-neutral-800 px-150 py-200 transition-colors hover:bg-neutral-700 focus:border-2 focus:border-neutral-900 focus:outline-2"
+            className="text-preset-7 text-neutral-0 rounded-8 focus:outline-neutral-0 flex cursor-pointer gap-125 bg-neutral-800 px-150 py-200 transition-colors hover:bg-neutral-700 focus:border-2 focus:border-neutral-900 focus:outline-2"
           >
             <img src="/assets/images/icon-units.svg" />
             <span>Units</span>
@@ -97,6 +109,7 @@ const Header = () => {
           Search
         </button>
       </div>
+      {checkResults()}
     </header>
   )
 }

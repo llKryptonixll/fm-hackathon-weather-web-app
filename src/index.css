@@ -1,10 +1,11 @@
 body {
   display: grid;
   place-items: center;
+  background-color: hsl(243, 96%, 9%);
 }
 
 #root {
-  max-width: 1920px;
+  max-width: 1440px;
   width: 100%;
 }
 
@@ -17,7 +18,7 @@ body {
 
 @font-face {
   font-family: 'DM Sans';
-  src: url('/assets/fonts/DM_Sans/static/DMSans-bold.ttf') format('truetype');
+  src: url('/assets/fonts/DM_Sans/static/DMSans-Bold.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
 }
@@ -70,9 +71,6 @@ body {
   --font-Bricolage: 'Bricolage Grotesque', sans-serif;
 
   /*font sizes*/
-  --text-base: 18px;
-  --text-base--line-height: 1.2;
-  --text-base--font-weight: 500;
 
   --text-preset-1: 5.333rem;
   --text-preset-1--letter-spacing: -0.111rem;
@@ -97,28 +95,32 @@ body {
   --text-preset-5-medium--line-height: 1.2;
   --text-preset-5-medium--font-weight: 500;
 
-  --text-preset-6: 0.888rem;
+  --text-preset-6: 18px;
   --text-preset-6--line-height: 1.2;
   --text-preset-6--font-weight: 500;
 
-  --text-preset-7: 0.777rem;
+  --text-preset-7: 0.888rem;
   --text-preset-7--line-height: 1.2;
   --text-preset-7--font-weight: 500;
 
+  --text-preset-8: 0.777rem;
+  --text-preset-8--line-height: 1.2;
+  --text-preset-8--font-weight: 500;
+
   /*spacing*/
-  --spacing-1400: 6.222rem;
-  --spacing-1000: 4.444rem;
-  --spacing-800: 3.556rem;
-  --spacing-600: 2.667rem;
-  --spacing-400: 1.778rem;
-  --spacing-300: 1.333rem;
-  --spacing-250: 1.111rem;
-  --spacing-200: 0.889rem;
-  --spacing-150: 0.667rem;
-  --spacing-125: 0.555rem;
-  --spacing-100: 0.444rem;
-  --spacing-75: 0.333rem;
-  --spacing-50: 0.222rem;
+  --spacing-1400: 112px;
+  --spacing-1000: 80px;
+  --spacing-800: 64px;
+  --spacing-600: 48px;
+  --spacing-400: 32px;
+  --spacing-300: 24px;
+  --spacing-250: 20px;
+  --spacing-200: 16px;
+  --spacing-150: 12px;
+  --spacing-125: 10px;
+  --spacing-100: 8px;
+  --spacing-75: 6px;
+  --spacing-50: 4px;
 
   /* corner radius */
   --radius-24: 1.333rem;
@@ -129,8 +131,12 @@ body {
   --radius-8: 0.444rem;
 
   /* breakpoints */
-  --breakpoint-mobile: 450px;
+  --breakpoint-mobile: 550px;
 
   /* animations*/
   --animate-spin-slow: spin 3s linear infinite;
+}
+
+.custom-scrollbar {
+  @apply [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:border-1 [&::-webkit-scrollbar-thumb]:border-neutral-600 [&::-webkit-scrollbar-thumb]:bg-neutral-700 [&::-webkit-scrollbar-track]:bg-transparent;
 }
