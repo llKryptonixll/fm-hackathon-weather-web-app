@@ -8,19 +8,18 @@ import { useState } from 'react'
 
 const Header = () => {
   const { dropdown, toggleDropdown, openDropdown, closeDropdown } = useDropdown()
-  const { selectedLocation, getSelectedLocation } = useContext(LocationContext)
+  const { selectedLocation, getSelectedLocation, locations, setLocations, checkResults } = useContext(LocationContext)
   const [isLoading, setIsLoading] = useState(false)
-  const [locations, setLocations] = useState(null)
   const [query, setQuery] = useState('')
 
-  const { name, admin1, country } = selectedLocation
+  const { name, admin1, country } = selectedLocation || {}
 
   function getPlaceholderText() {
     // also used for the label
-    if (selectedLocation !== '') {
-      return `${name}, ${admin1}, ${country}`
-    } else {
+    if (!selectedLocation) {
       return 'Search for a place...'
+    } else {
+      return [name, admin1, country].filter((item) => item !== undefined).join(', ')
     }
   }
 
@@ -37,19 +36,10 @@ const Header = () => {
     if (data?.results?.length > 0) {
       openDropdown('search-dropdown')
     } else {
+      getSelectedLocation(null)
       closeDropdown('search-dropdown')
     }
     setQuery('')
-  }
-
-  function checkResults() {
-    if (locations === null) {
-      return null
-    }
-
-    if (!locations.results || locations.results.length === 0) {
-      return <p className="text-neutral-0 text-preset-4 justify-self-center">No search result found!</p>
-    }
   }
 
   return (

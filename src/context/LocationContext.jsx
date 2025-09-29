@@ -4,12 +4,26 @@ const LocationContext = createContext()
 
 export function LocationProvider({ children }) {
   const [selectedLocation, setSelectedLocation] = useState('')
+  const [locations, setLocations] = useState(null)
 
   function getSelectedLocation(location) {
     setSelectedLocation(location)
   }
+
+  function checkResults() {
+    if (locations === null) {
+      return null
+    }
+
+    if (!locations.results || locations.results.length === 0) {
+      return <p className="text-neutral-0 text-preset-4 justify-self-center">No search result found!</p>
+    }
+  }
+
   return (
-    <LocationContext.Provider value={{ selectedLocation, getSelectedLocation }}>{children}</LocationContext.Provider>
+    <LocationContext.Provider value={{ selectedLocation, getSelectedLocation, locations, setLocations, checkResults }}>
+      {children}
+    </LocationContext.Provider>
   )
 }
 

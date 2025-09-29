@@ -1,7 +1,10 @@
 import HourlyForecastItem from './HourlyForecastItem'
+import WeatherContext from '../../context/WeatherContext'
+import { useContext } from 'react'
 
 const HourlyForecast = () => {
-  return (
+  const { weather } = useContext(WeatherContext)
+  return weather ? (
     <section className="custom-scrollbar rounded-20 h-[693px] w-full overflow-y-scroll bg-neutral-800 p-300 text-white lg:max-w-[384px]">
       <div className="flex items-center justify-between pb-200">
         <h2 className="text-preset-5 text-neutral-0">Hourly forecast</h2>
@@ -24,6 +27,8 @@ const HourlyForecast = () => {
         <HourlyForecastItem />
       </ul>
     </section>
+  ) : (
+    <></>
   )
 }
 
