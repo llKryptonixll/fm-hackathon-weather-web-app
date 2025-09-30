@@ -2,12 +2,21 @@ import { useContext } from 'react'
 import WeatherContext from '../context/WeatherContext'
 import UnitsContext from '../context/UnitsContext'
 import { celsiusToFahrenheit, kmhToMph, mmToIn } from '../helper/calculateUnits.js'
+import weatherImgPath from '../helper/weatherImgPath.js'
+import { currentCardDate } from '../helper/datesConverter.js'
 
 const MainWeatherCard = () => {
   const { weather, name, country } = useContext(WeatherContext)
   const { units } = useContext(UnitsContext)
-  const { temperature_2m, apparent_temperature, relative_humidity_2m, wind_speed_10m, precipitation } =
-    weather?.current || {}
+  const {
+    temperature_2m,
+    apparent_temperature,
+    relative_humidity_2m,
+    wind_speed_10m,
+    precipitation,
+    weather_code,
+    time,
+  } = weather?.current || {}
 
   const itemStyles =
     'bg-neutral-800 p-250 flex-1 rounded-12 items-center grid gap-300 border-1 border-neutral-600 leading-none mobile:basis-auto basis-[calc(50%-0.888rem)]'
@@ -17,10 +26,14 @@ const MainWeatherCard = () => {
       <div className="rounded-20 font-DMsan mobile:flex-row mobile:justify-between mobile:bg-[url(/assets/images/bg-today-large.svg)] flex min-h-[286px] flex-col items-center justify-center bg-[url(/assets/images/bg-today-small.svg)] bg-cover bg-center bg-no-repeat px-300">
         <div className="mobile:text-left grid gap-150 text-center">
           <h2 className="text-neutral-0 text-preset-4">{`${name}, ${country}`}</h2>
-          <p className="text-neutral-0 text-preset-6 opacity-80">Tuesday, Aug 5, 2025</p>
+          <p className="text-neutral-0 text-preset-6 opacity-80">{currentCardDate(time)}</p>
         </div>
         <div className="flex items-center gap-250">
-          <img className="max-w-[120px]" src="assets/images/icon-sunny.webp" alt="" />
+          <img
+            className="max-w-[120px]"
+            src={weatherImgPath(weather_code)}
+            alt={`Current Weather Code:${weather_code}`}
+          />
           <p className="text-neutral-0 text-preset-1 italic">
             {celsiusToFahrenheit(temperature_2m, units.temperature)}°
           </p>
