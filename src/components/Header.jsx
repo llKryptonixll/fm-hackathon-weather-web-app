@@ -1,10 +1,11 @@
-import Dropdown from './Dropdown'
+import UnitsDropdown from './layout/unitsDropdown'
 import SearchLoader from './SearchLoader'
 import useDropdown from '../hooks/useDropdown'
 import getLocation from '../services/getLocation'
 import { useContext } from 'react'
 import LocationContext from '../context/LocationContext'
 import { useState } from 'react'
+import SearchDropdown from './layout/SearchDropdown'
 
 const Header = () => {
   const { dropdown, toggleDropdown, openDropdown, closeDropdown } = useDropdown()
@@ -56,7 +57,7 @@ const Header = () => {
             <img src="/assets/images/icon-dropdown.svg" />
           </button>
         </div>
-        <Dropdown variant={'units-dropdown'} closeDropdown={closeDropdown} isOpen={dropdown === 'units-dropdown'} />
+        {dropdown === 'units-dropdown' && <UnitsDropdown closeDropdown={closeDropdown} />}
       </div>
       <h1 className="text-neutral-0 text-preset-2 font-Bricolage mobile:max-w-[400px] w-full max-w-[300px] justify-self-center text-center md:max-w-full">
         How's the sky looking today? <span className="sr-only">Use your personal Weather web app</span>
@@ -80,17 +81,15 @@ const Header = () => {
           <span className="absolute top-200 left-300">
             <img className="h-full w-full" src="/assets/images/icon-search.svg" />
           </span>
-          {isLoading ? (
-            <SearchLoader />
-          ) : (
-            <Dropdown
-              variant={'search-dropdown'}
+          {dropdown === 'search-dropdown' && !isLoading && (
+            <SearchDropdown
               closeDropdown={closeDropdown}
               locations={locations}
-              isOpen={dropdown === 'search-dropdown'}
+              isOpen
               getSelectedLocation={getSelectedLocation}
             />
           )}
+          {isLoading && <SearchLoader />}
         </div>
         <button
           onClick={handleSearchButton}

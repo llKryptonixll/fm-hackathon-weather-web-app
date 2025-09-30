@@ -7,3 +7,9 @@ export function currentCardDate(currentDate) {
   const fullDate = `${weekday}, ${month} ${day}, ${year}`
   return fullDate
 }
+
+export function getWeekDay(currentDate) {
+  const date = new Date(currentDate)
+  const weekday = date.toLocaleString('en-US', { weekday: 'short' })
+  return weekday
+}
