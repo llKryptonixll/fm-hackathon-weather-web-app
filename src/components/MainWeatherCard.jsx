@@ -3,7 +3,7 @@ import WeatherContext from '../context/WeatherContext'
 import UnitsContext from '../context/UnitsContext'
 import { celsiusToFahrenheit, kmhToMph, mmToIn } from '../helper/calculateUnits.js'
 import weatherImgPath from '../helper/weatherImgPath.js'
-import { currentCardDate } from '../helper/datesConverter.js'
+import { currentDate } from '../helper/datesConverter.js'
 
 const MainWeatherCard = () => {
   const { weather, name, country } = useContext(WeatherContext)
@@ -26,7 +26,7 @@ const MainWeatherCard = () => {
       <div className="rounded-20 font-DMsan mobile:flex-row mobile:justify-between mobile:bg-[url(/assets/images/bg-today-large.svg)] flex min-h-[286px] flex-col items-center justify-center bg-[url(/assets/images/bg-today-small.svg)] bg-cover bg-center bg-no-repeat px-300">
         <div className="mobile:text-left grid gap-150 text-center">
           <h2 className="text-neutral-0 text-preset-4">{`${name}, ${country}`}</h2>
-          <p className="text-neutral-0 text-preset-6 opacity-80">{currentCardDate(time)}</p>
+          <p className="text-neutral-0 text-preset-6 opacity-80">{currentDate(time)}</p>
         </div>
         <div className="flex items-center gap-250">
           <img

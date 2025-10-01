@@ -1,4 +1,4 @@
-import UnitsDropdown from './layout/unitsDropdown'
+import UnitsDropdown from './layout/UnitsDropdown'
 import SearchLoader from './SearchLoader'
 import useDropdown from '../hooks/useDropdown'
 import getLocation from '../services/getLocation'

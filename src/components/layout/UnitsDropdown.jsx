@@ -26,7 +26,7 @@ const UnitsDropdown = ({ closeDropdown }) => {
     >
       <button
         onClick={switchMetric}
-        className="text-neutral-0 text-preset-7 px-100 py-125"
+        className="text-neutral-0 text-preset-7 rounded-8 focus:outline-neutral-0 w-full cursor-pointer px-100 py-125 text-left transition-colors hover:bg-neutral-700 focus:border-1 focus:border-neutral-900 focus:outline-1"
         id="unit-toggle"
         aria-pressed="false"
       >
@@ -44,7 +44,7 @@ const UnitsDropdown = ({ closeDropdown }) => {
             value="celsius"
             className="peer sr-only"
           />
-          <span className="text-preset-7 text-neutral-0 rounded-8 inline-block w-full px-100 py-125 peer-checked:bg-neutral-700">
+          <span className="text-preset-7 text-neutral-0 rounded-8 inline-block w-full px-100 py-125 transition-colors peer-checked:bg-neutral-700 hover:bg-neutral-700">
             Celsius (°C)
           </span>
         </label>
@@ -58,7 +58,7 @@ const UnitsDropdown = ({ closeDropdown }) => {
             value="fahrenheit"
             className="peer sr-only"
           />
-          <span className="text-preset-7 text-neutral-0 rounded-8 inline-block w-full px-100 py-125 peer-checked:bg-neutral-700">
+          <span className="text-preset-7 text-neutral-0 rounded-8 inline-block w-full px-100 py-125 transition-colors peer-checked:bg-neutral-700 hover:bg-neutral-700">
             Fahrenheit (°F)
           </span>
         </label>
@@ -75,7 +75,7 @@ const UnitsDropdown = ({ closeDropdown }) => {
             value="km/h"
             className="peer sr-only"
           />
-          <span className="text-preset-7 text-neutral-0 rounded-8 inline-block w-full px-100 py-125 peer-checked:bg-neutral-700">
+          <span className="text-preset-7 text-neutral-0 rounded-8 inline-block w-full px-100 py-125 transition-colors peer-checked:bg-neutral-700 hover:bg-neutral-700">
             km/h
           </span>
         </label>
@@ -89,7 +89,7 @@ const UnitsDropdown = ({ closeDropdown }) => {
             value="mph"
             className="peer sr-only"
           />
-          <span className="text-preset-7 text-neutral-0 rounded-8 inline-block w-full px-100 py-125 peer-checked:bg-neutral-700">
+          <span className="text-preset-7 text-neutral-0 rounded-8 inline-block w-full px-100 py-125 transition-colors peer-checked:bg-neutral-700 hover:bg-neutral-700">
             mph
           </span>
         </label>
@@ -106,7 +106,7 @@ const UnitsDropdown = ({ closeDropdown }) => {
             value="mm"
             className="peer sr-only"
           />
-          <span className="text-preset-7 text-neutral-0 rounded-8 inline-block w-full px-100 py-125 peer-checked:bg-neutral-700">
+          <span className="text-preset-7 text-neutral-0 rounded-8 inline-block w-full px-100 py-125 transition-colors peer-checked:bg-neutral-700 hover:bg-neutral-700">
             Millimeters (mm)
           </span>
         </label>
@@ -120,7 +120,7 @@ const UnitsDropdown = ({ closeDropdown }) => {
             value="inches"
             className="peer sr-only"
           />
-          <span className="text-preset-7 text-neutral-0 inline-block w-full rounded px-100 py-125 peer-checked:bg-neutral-700">
+          <span className="text-preset-7 text-neutral-0 inline-block w-full rounded px-100 py-125 transition-colors peer-checked:bg-neutral-700 hover:bg-neutral-700">
             Inches (in)
           </span>
         </label>
