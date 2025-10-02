@@ -1,30 +1,21 @@
 const SearchLoader = () => {
   return (
     <div className="rounded-12 text-neutral-0 absolute top-16 flex h-full w-full items-center gap-50 border-1 border-neutral-700 bg-neutral-800 p-100">
-      <div role="status" aria-live="polite" aria-label="Search in progress">
-        <div className="pointer-events-none flex items-center gap-50">
-          <svg
-            width="16"
-            height="19"
-            viewBox="0 0 48 48"
-            xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true"
-            className="animate-spin-slow"
-          >
-            <title>Search in progress</title>
-            <g>
-              <circle cx="24" cy="6" r="3" className="fill-current" />
-              <circle cx="36.97" cy="11.03" r="3" className="fill-current" />
-              <circle cx="42" cy="24" r="3" className="fill-current" />
-              <circle cx="36.97" cy="36.97" r="3" className="fill-current" />
-              <circle cx="24" cy="42" r="3" className="fill-current" />
-              <circle cx="11.03" cy="36.97" r="3" className="fill-current" />
-              <circle cx="6" cy="24" r="3" className="fill-current" />
-            </g>
-          </svg>
-          <span className="text-neutral-0 text-preset-7">Search in progress</span>
-        </div>
-      </div>
+      <svg
+        className="animate-spin-slow"
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        fill="none"
+        viewBox="0 0 16 16"
+      >
+        <path
+          fill="#fff"
+          d="M9.25 1.5c0 .719-.563 1.25-1.25 1.25-.719 0-1.25-.531-1.25-1.25C6.75.812 7.281.25 8 .25c.688 0 1.25.563 1.25 1.25ZM8 13.25c.688 0 1.25.563 1.25 1.25 0 .719-.563 1.25-1.25 1.25-.719 0-1.25-.531-1.25-1.25 0-.688.531-1.25 1.25-1.25ZM15.75 8c0 .719-.563 1.25-1.25 1.25-.719 0-1.25-.531-1.25-1.25 0-.688.531-1.25 1.25-1.25.688 0 1.25.563 1.25 1.25Zm-13 0c0 .719-.563 1.25-1.25 1.25C.781 9.25.25 8.719.25 8c0-.688.531-1.25 1.25-1.25.688 0 1.25.563 1.25 1.25Zm.625-5.844c.719 0 1.25.563 1.25 1.25 0 .719-.531 1.25-1.25 1.25-.688 0-1.25-.531-1.25-1.25 0-.687.563-1.25 1.25-1.25Zm9.219 9.219c.687 0 1.25.531 1.25 1.25 0 .688-.563 1.25-1.25 1.25-.719 0-1.25-.563-1.25-1.25 0-.719.531-1.25 1.25-1.25Zm-9.219 0c.719 0 1.25.531 1.25 1.25 0 .688-.531 1.25-1.25 1.25-.688 0-1.25-.563-1.25-1.25 0-.719.563-1.25 1.25-1.25Z"
+        />
+        <title>Search in progress</title>
+      </svg>
+      <span className="text-neutral-0 text-preset-7">Search in progress</span>
     </div>
   )
 }
