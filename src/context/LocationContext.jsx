@@ -3,7 +3,14 @@ import { createContext, useState } from 'react'
 const LocationContext = createContext()
 
 export function LocationProvider({ children }) {
-  const [selectedLocation, setSelectedLocation] = useState('')
+  const defaultLocation = {
+    name: 'Berlin',
+    country: 'Germany',
+    latitude: 52.52,
+    longitude: 13.405,
+  }
+
+  const [selectedLocation, setSelectedLocation] = useState(defaultLocation)
   const [locations, setLocations] = useState(null)
 
   function getSelectedLocation(location) {

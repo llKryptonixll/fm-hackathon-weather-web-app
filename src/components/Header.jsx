@@ -13,6 +13,8 @@ const Header = () => {
   const [isLoading, setIsLoading] = useState(false)
   const [query, setQuery] = useState('')
 
+  console.log(selectedLocation)
+
   const { name, admin1, country } = selectedLocation || {}
 
   function getPlaceholderText() {

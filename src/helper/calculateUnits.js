@@ -2,7 +2,7 @@ export function celsiusToFahrenheit(rawTemp, targetUnit) {
   if (targetUnit === 'Fahrenheit') {
     return Math.round((rawTemp * 9) / 5 + 32)
   } else {
-    return rawTemp
+    return Math.round(rawTemp)
   }
 }
 
@@ -10,7 +10,7 @@ export function kmhToMph(rawSpeed, targetUnit) {
   if (targetUnit === 'mph') {
     return Math.round(rawSpeed * 0.621371)
   } else {
-    return rawSpeed
+    return Math.round(rawSpeed)
   }
 }
 

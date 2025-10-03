@@ -5,7 +5,6 @@ const DaysDropdown = ({ selectedDay, setSelectedDay, closeDropdown }) => {
     setSelectedDay(day)
     closeDropdown()
   }
-  console.log(selectedDay)
 
   return (
     <fieldset className="rounded-12 absolute top-10 right-0 z-30 grid w-[214px] gap-50 border-1 border-neutral-600 bg-neutral-800 p-100">
