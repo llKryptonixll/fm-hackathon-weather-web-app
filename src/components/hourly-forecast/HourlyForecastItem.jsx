@@ -8,15 +8,18 @@ const HourlyForecastItem = ({ time, weatherCode, temperature, isLoading }) => {
   const { units } = useContext(UnitsContext)
   return (
     <li
-      className={`${isLoading && 'animate-pulse'} rounded-8 flex min-h-[60px] items-center justify-between border-1 border-neutral-600 bg-neutral-700 py-[10px] pr-200 pl-150`}
+      aria-busy={isLoading}
+      className={`${isLoading ? 'animate-pulse' : ''} rounded-8 flex min-h-[60px] items-center justify-between border-1 border-neutral-600 bg-neutral-700 py-[10px] pr-200 pl-150`}
     >
       {isLoading ? (
-        ''
+        <p className="sr-only">Loading...</p>
       ) : (
         <>
           <div className="flex items-center gap-100">
-            <img className="h-[40px]" src={weatherImgPath(weatherCode)} alt="" />
-            <span className="text-preset-5-medium text-neutral-0">{getHour(time)}</span>
+            <img className="h-[40px]" src={weatherImgPath(weatherCode)} alt={`Current Weather Code: ${weatherCode}`} />
+            <time className="text-preset-5-medium text-neutral-0" dateTime={time}>
+              {getHour(time)}
+            </time>
           </div>
           <span>{celsiusToFahrenheit(temperature, units.temperature)}°</span>
         </>

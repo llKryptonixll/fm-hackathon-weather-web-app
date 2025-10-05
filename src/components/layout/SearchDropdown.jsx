@@ -12,6 +12,7 @@ const SearchDropdown = ({ closeDropdown, locations, getSelectedLocation }) => {
         locations.results &&
         locations.results.map((location) => (
           <li
+            tabIndex={0}
             onClick={() => handleItemClick(location)}
             key={location.id}
             className="text-neutral-0 text-preset-7 rounded-8 cursor-pointer border-1 border-transparent px-100 py-125 transition-colors hover:border-neutral-600 hover:bg-neutral-700"

@@ -17,9 +17,9 @@ const DaysDropdown = ({ selectedDay, setSelectedDay, closeDropdown }) => {
               className="peer sr-only"
               id={day}
               checked={selectedDay === day}
-              type="checkbox"
-              name={day}
-              value={'day'}
+              type="radio"
+              name={'days'}
+              value={day}
             />
             <span className="rounded-8 text-preset-7 inline-flex w-full cursor-pointer px-100 py-125 transition-colors peer-checked:bg-neutral-700 hover:bg-neutral-700">
               {day}

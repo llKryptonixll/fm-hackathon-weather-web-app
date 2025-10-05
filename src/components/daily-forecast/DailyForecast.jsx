@@ -13,7 +13,8 @@ const DailyForecast = () => {
         maxTemp: weather.daily.temperature_2m_max[index],
         weatherCode: weather.daily.weather_code[index],
       }))
-    : Array.from({ length: 7 }).map(() => ({
+    : // this renders 7 placeholder items to show the skeleton loader
+      Array.from({ length: 7 }).map(() => ({
         date: null,
         minTemp: null,
         maxTemp: null,
@@ -23,7 +24,7 @@ const DailyForecast = () => {
   return selectedLocation ? (
     <section className="self-end">
       <h2 className="text-neutral-0 text-preset-5-medium">Daily forecast</h2>
-      <dl className="flex flex-wrap items-center gap-200 pt-250">
+      <ul className="flex flex-wrap items-center gap-200 pt-250">
         {dailyData?.map((item, index) => {
           return (
             <DailyForeacastItem
@@ -36,7 +37,7 @@ const DailyForecast = () => {
             />
           )
         })}
-      </dl>
+      </ul>
     </section>
   ) : null
 }

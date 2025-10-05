@@ -1,10 +1,10 @@
 import HourlyForecastItem from './HourlyForecastItem'
-import WeatherContext from '../../context/WeatherContext'
-import { useContext, useState } from 'react'
-import useDropdown from '../../hooks/useDropdown'
 import DaysDropdown from '../layout/DaysDropdown'
 import { getWeekDay } from '../../helper/datesConverter'
+import WeatherContext from '../../context/WeatherContext'
 import LocationContext from '../../context/LocationContext'
+import useDropdown from '../../hooks/useDropdown'
+import { useContext, useState } from 'react'
 
 const HourlyForecast = () => {
   const { weather, isLoading } = useContext(WeatherContext)
@@ -20,6 +20,7 @@ const HourlyForecast = () => {
       temperature: weather.hourly.temperature_2m[index],
       weather_code: weather.hourly.weather_code[index],
     })) ||
+    // this renders 24 placeholder items to show the skeleton loader
     Array.from({ length: 24 }).map(() => ({
       time: null,
       temperature: null,
@@ -39,7 +40,9 @@ const HourlyForecast = () => {
         <h2 className="text-preset-5 text-neutral-0">Hourly forecast</h2>
         <button
           onClick={() => toggleDropdown('days-dropdown')}
-          className="rounded-8 flex cursor-pointer gap-150 bg-neutral-600 px-200 py-100"
+          aria-haspopup="listbox"
+          aria-expanded={dropdown === 'days-dropdown'}
+          className="rounded-8 flex cursor-pointer items-center gap-150 bg-neutral-600 px-200 py-100"
         >
           {isLoading ? <span>-</span> : <span className="text-preset-7">{selectedDay}</span>}
           <img src="/assets/images/icon-dropdown.svg" alt="" />

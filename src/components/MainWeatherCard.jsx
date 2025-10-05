@@ -37,7 +37,9 @@ const MainWeatherCard = () => {
           <>
             <div className="mobile:text-left grid gap-150 text-center">
               <h2 className="text-neutral-0 text-preset-4">{name && country ? `${name} ${country}` : ''}</h2>
-              <p className="text-neutral-0 text-preset-6 opacity-80">{currentDate(time)}</p>
+              <time dateTime={time} className="text-neutral-0 text-preset-6 opacity-80">
+                {currentDate(time)}
+              </time>
             </div>
             <div className="flex items-center gap-250">
               <img
@@ -52,38 +54,34 @@ const MainWeatherCard = () => {
           </>
         )}
       </div>
-      <dl className="mobile:gap-250 flex flex-wrap justify-between gap-200 pt-400 md:gap-300">
-        <div className={itemStyles}>
-          <dt className="text-preset-6 text-neutral-200">Feels like</dt>
-          <dd className="text-preset-3 text-neutral-0">
+      <ul className="mobile:gap-250 flex flex-wrap justify-between gap-200 pt-400 md:gap-300">
+        <li className={itemStyles}>
+          <p className="text-preset-6 text-nowrap text-neutral-200">Feels like</p>
+          <p className="text-preset-3 text-neutral-0">
             {isLoading ? '-' : `${celsiusToFahrenheit(apparent_temperature, units.temperature)}°`}
-          </dd>
-        </div>
-        <div className={itemStyles}>
-          <dt className="text-preset-6 text-neutral-200">Humidity</dt>
-          <dd className="text-preset-3 text-neutral-0">{isLoading ? '-' : `${relative_humidity_2m} %`}</dd>
-        </div>
-        <div className={itemStyles}>
-          <dt className="text-preset-6 text-neutral-200">Wind</dt>
-          {isLoading ? (
-            <p className="text-preset-3 text-neutral-0">-</p>
-          ) : (
-            <dd className="text-preset-3 text-neutral-0">
-              {isLoading ? '-' : `${kmhToMph(wind_speed_10m, units.windSpeed)} ${units.windSpeed}`}
-            </dd>
-          )}
-        </div>
-        <div className={itemStyles}>
-          <dt className="text-preset-6 text-neutral-200">Precipitation</dt>
-          {isLoading ? (
-            <p className="text-preset-3 text-neutral-0">-</p>
-          ) : (
-            <dd className="text-preset-3 text-neutral-0">
-              {isLoading ? '-' : `${mmToIn(precipitation, units.precipitation)} ${units.precipitation}`}
-            </dd>
-          )}
-        </div>
-      </dl>
+          </p>
+        </li>
+        <li className={itemStyles}>
+          <p className="text-preset-6 text-neutral-200">Humidity</p>
+          <p className="text-preset-3 text-neutral-0 mobile:text-nowrap text-wrap">
+            {isLoading ? '-' : `${relative_humidity_2m} %`}
+          </p>
+        </li>
+        <li className={itemStyles}>
+          <p className="text-preset-6 text-neutral-200">Wind</p>
+
+          <p className="text-preset-3 text-neutral-0 mobile:text-nowrap text-wrap">
+            {isLoading ? '-' : `${kmhToMph(wind_speed_10m, units.windSpeed)} ${units.windSpeed}`}
+          </p>
+        </li>
+        <li className={itemStyles}>
+          <p className="text-preset-6 text-neutral-200">Precipitation</p>
+
+          <p className="text-preset-3 text-neutral-0 mobile:text-nowrap text-wrap">
+            {isLoading ? '-' : `${mmToIn(precipitation, units.precipitation)} ${units.precipitation}`}
+          </p>
+        </li>
+      </ul>
     </section>
   ) : null
 }

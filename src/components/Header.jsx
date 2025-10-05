@@ -54,7 +54,9 @@ const Header = () => {
         <div>
           <button
             onClick={() => toggleDropdown('units-dropdown')}
-            className="text-preset-7 text-neutral-0 rounded-8 focus:outline-neutral-0 mobile:px-150 mobile:py-200 flex cursor-pointer gap-125 bg-neutral-800 px-125 py-100 transition-colors hover:bg-neutral-700 focus:border-2 focus:border-neutral-900 focus:outline-2"
+            aria-expanded={dropdown === 'units-dropdown'}
+            aria-controls="units-dropdown"
+            className="text-preset-7 text-neutral-0 rounded-8 focus:outline-neutral-0 mobile:px-150 mobile:py-200 flex cursor-pointer items-center gap-125 bg-neutral-800 px-125 py-100 transition-colors hover:bg-neutral-700 focus:border-2 focus:border-neutral-900 focus:outline-2"
           >
             <img src="/assets/images/icon-units.svg" />
             <span>Units</span>
@@ -101,6 +103,7 @@ const Header = () => {
             </div>
             <button
               type="button"
+              aria-expanded={dropdown === 'search-dropdown'}
               onClick={handleSearchButton}
               className={`${dropdown === null ? 'focus:border-2 focus:border-neutral-900 focus:outline-2 focus:outline-blue-500' : ''} text-neutral-0 rounded-12 mobile:w-auto w-full cursor-pointer self-start bg-blue-500 px-300 py-200 transition-colors hover:bg-blue-700`}
             >
