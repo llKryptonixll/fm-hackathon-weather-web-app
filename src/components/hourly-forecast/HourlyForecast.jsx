@@ -45,7 +45,7 @@ const HourlyForecast = () => {
           className="rounded-8 flex cursor-pointer items-center gap-150 bg-neutral-600 px-200 py-100"
         >
           {isLoading ? <span>-</span> : <span className="text-preset-7">{selectedDay}</span>}
-          <img src="/assets/images/icon-dropdown.svg" alt="" />
+          <img src="/assets/images/icon-dropdown.svg" alt="Open/Close Dropdown" />
         </button>
         {dropdown === 'days-dropdown' && (
           <DaysDropdown selectedDay={selectedDay} closeDropdown={closeDropdown} setSelectedDay={setSelectedDay} />

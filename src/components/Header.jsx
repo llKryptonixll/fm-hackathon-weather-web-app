@@ -58,9 +58,9 @@ const Header = () => {
             aria-controls="units-dropdown"
             className="text-preset-7 text-neutral-0 rounded-8 focus:outline-neutral-0 mobile:px-150 mobile:py-200 flex cursor-pointer items-center gap-125 bg-neutral-800 px-125 py-100 transition-colors hover:bg-neutral-700 focus:border-2 focus:border-neutral-900 focus:outline-2"
           >
-            <img src="/assets/images/icon-units.svg" />
+            <img src="/assets/images/icon-units.svg" alt="Units Settings" />
             <span>Units</span>
-            <img src="/assets/images/icon-dropdown.svg" />
+            <img src="/assets/images/icon-dropdown.svg" alt="Open/Close Units Dropdown" />
           </button>
         </div>
         {dropdown === 'units-dropdown' && <UnitsDropdown closeDropdown={closeDropdown} />}
@@ -90,7 +90,7 @@ const Header = () => {
                 type="text"
               />
               <span className="absolute top-200 left-300">
-                <img className="h-full w-full" src="/assets/images/icon-search.svg" />
+                <img className="h-full w-full" src="/assets/images/icon-search.svg" alt="Search Location" />
               </span>
               {dropdown === 'search-dropdown' && !isLoading && (
                 <SearchDropdown

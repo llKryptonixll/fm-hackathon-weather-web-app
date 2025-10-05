@@ -1,5 +1,0 @@
-check whole code for cleaner tailwind
-this is clean:
-  const bgClass = isLoading
-    ? 'bg-black'
-    : 'bg-[url(/assets/images/bg-today-small.svg)] bg-cover bg-center mobile:bg-[url(/assets/images/bg-today-large.svg)]'
