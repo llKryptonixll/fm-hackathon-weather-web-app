@@ -1,3 +1,8 @@
+# Design files (please do not remove 🙂)
+*.sketch
+*.fig
+*.xd
+
 # Logs
 logs
 *.log
