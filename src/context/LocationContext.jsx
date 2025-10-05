@@ -1,4 +1,5 @@
 import { createContext, useState } from 'react'
+import getLocation from '../services/getLocation'
 
 const LocationContext = createContext()
 
@@ -12,9 +13,34 @@ export function LocationProvider({ children }) {
 
   const [selectedLocation, setSelectedLocation] = useState(defaultLocation)
   const [locations, setLocations] = useState(null)
+  const [isLoading, setIsLoading] = useState(false)
+  const [locationApiError, setLocationApiError] = useState(null)
+  const [lastQuery, setLastQuery] = useState(null)
 
   function getSelectedLocation(location) {
     setSelectedLocation(location)
+  }
+
+  async function fetchLocations(query) {
+    setIsLoading(true)
+    setLastQuery(query)
+    try {
+      const data = await getLocation(query)
+      setLocations(data)
+      setLocationApiError(null)
+      return data
+    } catch (error) {
+      setLocationApiError(error)
+      console.error('Error fetching locations:', error)
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  async function refetchLocation() {
+    if (lastQuery) {
+      return fetchLocations(lastQuery)
+    }
   }
 
   function checkResults() {
@@ -28,7 +54,19 @@ export function LocationProvider({ children }) {
   }
 
   return (
-    <LocationContext.Provider value={{ selectedLocation, getSelectedLocation, locations, setLocations, checkResults }}>
+    <LocationContext.Provider
+      value={{
+        selectedLocation,
+        fetchLocations,
+        getSelectedLocation,
+        locations,
+        isLoading,
+        locationApiError,
+        refetchLocation,
+        setLocations,
+        checkResults,
+      }}
+    >
       {children}
     </LocationContext.Provider>
   )

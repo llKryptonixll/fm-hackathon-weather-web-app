@@ -9,24 +9,34 @@ export function WeatherProvider({ children }) {
   const { selectedLocation } = useContext(LocationContext)
   const [isLoading, setIsLoading] = useState(false)
   const { name, country, latitude, longitude } = selectedLocation || {}
+  const [weatherApiError, setWeatherApiError] = useState(null)
+
+  async function fetchWeather() {
+    if (!latitude || !longitude) return
+    setIsLoading(true)
+    try {
+      const data = await getWeather(longitude, latitude)
+      setWeather(data)
+      setWeatherApiError(null)
+    } catch (err) {
+      setWeatherApiError(err)
+      setWeather(null)
+    } finally {
+      setIsLoading(false)
+    }
+  }
 
   useEffect(() => {
-    async function fetchWeather() {
-      setIsLoading(true)
-      if (!selectedLocation || !longitude || !latitude) {
-        setWeather(null)
-        setIsLoading(false)
-      } else {
-        const data = await getWeather(longitude, latitude)
-        setWeather(data)
-        setIsLoading(false)
-      }
-    }
-
     fetchWeather()
   }, [selectedLocation])
 
-  return <WeatherContext.Provider value={{ name, country, weather, isLoading }}>{children}</WeatherContext.Provider>
+  return (
+    <WeatherContext.Provider
+      value={{ name, country, weather, isLoading, weatherApiError, refetchWeather: fetchWeather }}
+    >
+      {children}
+    </WeatherContext.Provider>
+  )
 }
 
 export default WeatherContext

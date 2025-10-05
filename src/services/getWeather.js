@@ -7,7 +7,7 @@ async function getWeather(long, lat) {
       hourly: 'temperature_2m,weather_code',
       daily: 'temperature_2m_max,temperature_2m_min,weather_code',
       current:
-        'temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,wind_speed_10m,is_day,weather_code',
+        'temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,wind_speed_10m,is_day,weather_code', // remove "code" to force an error
       timezone: 'auto',
     })
 
@@ -20,7 +20,8 @@ async function getWeather(long, lat) {
     const data = await response.json()
     return data
   } catch (error) {
-    console.error('getWeather error:', error)
+    console.error('Weather API fetch failed:', error.message)
+    throw error
   }
 }
 

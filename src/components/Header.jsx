@@ -1,19 +1,24 @@
 import UnitsDropdown from './layout/UnitsDropdown'
-import SearchLoader from './SearchLoader'
-import useDropdown from '../hooks/useDropdown'
-import getLocation from '../services/getLocation'
-import { useContext } from 'react'
-import LocationContext from '../context/LocationContext'
-import { useState } from 'react'
 import SearchDropdown from './layout/SearchDropdown'
+import SearchLoader from './SearchLoader'
+import LocationContext from '../context/LocationContext'
+import WeatherContext from '../context/WeatherContext'
+import DropdownContext from '../context/DropdownContext'
+import { useState, useContext } from 'react'
 
 const Header = () => {
-  const { dropdown, toggleDropdown, openDropdown, closeDropdown } = useDropdown()
-  const { selectedLocation, getSelectedLocation, locations, setLocations, checkResults } = useContext(LocationContext)
-  const [isLoading, setIsLoading] = useState(false)
+  const { dropdown, toggleDropdown, openDropdown, closeDropdown } = useContext(DropdownContext)
+  const {
+    selectedLocation,
+    getSelectedLocation,
+    locations,
+    isLoading,
+    fetchLocations,
+    checkResults,
+    locationApiError,
+  } = useContext(LocationContext)
+  const { weatherApiError } = useContext(WeatherContext)
   const [query, setQuery] = useState('')
-
-  console.log(selectedLocation)
 
   const { name, admin1, country } = selectedLocation || {}
 
@@ -31,16 +36,13 @@ const Header = () => {
   }
 
   async function handleSearchButton() {
-    if (query === '') return
-    setIsLoading(true)
-    const data = await getLocation(query)
-    setLocations(data)
-    setIsLoading(false)
+    if (!query) return
+    const data = await fetchLocations(query)
     if (data?.results?.length > 0) {
       openDropdown('search-dropdown')
     } else {
-      getSelectedLocation(null)
       closeDropdown('search-dropdown')
+      getSelectedLocation(null)
     }
     setQuery('')
   }
@@ -61,46 +63,53 @@ const Header = () => {
         </div>
         {dropdown === 'units-dropdown' && <UnitsDropdown closeDropdown={closeDropdown} />}
       </div>
-      <h1 className="text-neutral-0 text-preset-2 font-Bricolage mobile:max-w-[400px] w-full max-w-[300px] justify-self-center text-center md:max-w-full">
-        How's the sky looking today? <span className="sr-only">Use your personal Weather web app</span>
-      </h1>
-      <div className="mobile:flex-row flex w-full flex-col justify-center gap-200">
-        <div className="relative flex w-full gap-150 md:max-w-[478px]">
-          <label className="sr-only" htmlFor="search-input">
-            {getPlaceholderText()}
-          </label>
-          <input
-            onChange={(event) => {
-              handleSearchInput(event)
-            }}
-            value={query}
-            id="search-input"
-            name="search-input"
-            className="rounded-12 text-preset-5-medium focus:outline-neutral-0 h-full w-full cursor-pointer bg-neutral-800 px-800 py-200 text-neutral-200 caret-neutral-200 transition-colors placeholder:text-neutral-200 hover:bg-neutral-700 focus:border-2 focus:border-neutral-900 focus:outline-2"
-            placeholder={getPlaceholderText()}
-            type="text"
-          />
-          <span className="absolute top-200 left-300">
-            <img className="h-full w-full" src="/assets/images/icon-search.svg" />
-          </span>
-          {dropdown === 'search-dropdown' && !isLoading && (
-            <SearchDropdown
-              closeDropdown={closeDropdown}
-              locations={locations}
-              isOpen
-              getSelectedLocation={getSelectedLocation}
-            />
-          )}
-          {isLoading && <SearchLoader />}
-        </div>
-        <button
-          onClick={handleSearchButton}
-          className={`${dropdown === null ? 'focus:border-2 focus:border-neutral-900 focus:outline-2 focus:outline-blue-500' : ''} text-neutral-0 rounded-12 mobile:w-auto w-full cursor-pointer self-start bg-blue-500 px-300 py-200 transition-colors hover:bg-blue-700`}
-        >
-          Search
-        </button>
-      </div>
-      {checkResults()}
+
+      {weatherApiError || locationApiError ? (
+        ''
+      ) : (
+        <>
+          <h1 className="text-neutral-0 text-preset-2 font-Bricolage mobile:max-w-[400px] w-full max-w-[300px] justify-self-center text-center md:max-w-full">
+            How's the sky looking today? <span className="sr-only">Use your personal Weather web app</span>
+          </h1>
+          <div className="mobile:flex-row flex w-full flex-col justify-center gap-200">
+            <div className="relative flex w-full gap-150 md:max-w-[478px]">
+              <label className="sr-only" htmlFor="search-input">
+                {getPlaceholderText()}
+              </label>
+              <input
+                onChange={(event) => {
+                  handleSearchInput(event)
+                }}
+                value={query}
+                id="search-input"
+                name="search-input"
+                className="rounded-12 text-preset-5-medium focus:outline-neutral-0 h-full w-full cursor-pointer bg-neutral-800 px-800 py-200 text-neutral-200 caret-neutral-200 transition-colors placeholder:text-neutral-200 hover:bg-neutral-700 focus:border-2 focus:border-neutral-900 focus:outline-2"
+                placeholder={getPlaceholderText()}
+                type="text"
+              />
+              <span className="absolute top-200 left-300">
+                <img className="h-full w-full" src="/assets/images/icon-search.svg" />
+              </span>
+              {dropdown === 'search-dropdown' && !isLoading && (
+                <SearchDropdown
+                  closeDropdown={closeDropdown}
+                  locations={locations}
+                  getSelectedLocation={getSelectedLocation}
+                />
+              )}
+              {isLoading && <SearchLoader />}
+            </div>
+            <button
+              type="button"
+              onClick={handleSearchButton}
+              className={`${dropdown === null ? 'focus:border-2 focus:border-neutral-900 focus:outline-2 focus:outline-blue-500' : ''} text-neutral-0 rounded-12 mobile:w-auto w-full cursor-pointer self-start bg-blue-500 px-300 py-200 transition-colors hover:bg-blue-700`}
+            >
+              Search
+            </button>
+          </div>
+          {checkResults()}
+        </>
+      )}
     </header>
   )
 }

@@ -1,29 +1,11 @@
-import { useRef, useContext, useEffect } from 'react'
+import { useContext } from 'react'
 import UnitsContext from '../../context/UnitsContext'
 
 const UnitsDropdown = ({ closeDropdown }) => {
   const { metric, units, onChange, switchMetric } = useContext(UnitsContext)
-  const dropdownRef = useRef(null)
-
-  function handleClickOutside(event) {
-    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-      closeDropdown('units-dropdown')
-    }
-  }
-
-  useEffect(() => {
-    document.addEventListener('mousedown', handleClickOutside)
-
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside)
-    }
-  }, [])
 
   return (
-    <div
-      ref={dropdownRef}
-      className="rounded-12 absolute top-[55px] right-0 z-100 w-full max-w-[214px] border-1 border-neutral-600 bg-neutral-800 px-100 py-75 text-white"
-    >
+    <div className="rounded-12 absolute top-[55px] right-0 z-100 w-full max-w-[214px] border-1 border-neutral-600 bg-neutral-800 px-100 py-75 text-white">
       <button
         onClick={switchMetric}
         className="text-neutral-0 text-preset-7 rounded-8 focus:outline-neutral-0 w-full cursor-pointer px-100 py-125 text-left transition-colors hover:bg-neutral-700 focus:border-1 focus:border-neutral-900 focus:outline-1"

@@ -9,7 +9,7 @@ const DailyForecastItem = ({ date, minTemp, maxTemp, weatherCode, isLoading }) =
 
   return (
     <div
-      className={`${isLoading && 'animate-pulse'} rounded-12 grid min-h-[165px] flex-1 place-items-center gap-200 border-1 border-neutral-600 bg-neutral-800 px-125 py-200`}
+      className={`${isLoading && 'animate-pulse'} rounded-12 mobile:basis-0 grid min-h-[165px] flex-1 basis-[30%] place-items-center gap-200 border-1 border-neutral-600 bg-neutral-800 px-125 py-200`}
     >
       {isLoading ? (
         ''

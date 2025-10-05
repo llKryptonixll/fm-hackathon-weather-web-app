@@ -1,4 +1,4 @@
-const SearchDropdown = ({ closeDropdown, isOpen, locations, getSelectedLocation }) => {
+const SearchDropdown = ({ closeDropdown, locations, getSelectedLocation }) => {
   const searchDropdownStyles =
     'custom-scrollbar bg-neutral-800 absolute top-16 w-full h-[184px] rounded-12 p-100 border-1 border-neutral-700 overflow-y-scroll'
 
@@ -6,7 +6,7 @@ const SearchDropdown = ({ closeDropdown, isOpen, locations, getSelectedLocation 
     getSelectedLocation(location)
     closeDropdown('search-dropdown')
   }
-  return isOpen ? (
+  return (
     <ul className={searchDropdownStyles}>
       {locations &&
         locations.results &&
@@ -20,7 +20,7 @@ const SearchDropdown = ({ closeDropdown, isOpen, locations, getSelectedLocation 
           </li>
         ))}
     </ul>
-  ) : null
+  )
 }
 
 export default SearchDropdown

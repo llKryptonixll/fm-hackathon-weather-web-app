@@ -11,6 +11,7 @@ async function getLocation(query) {
     return data
   } catch (error) {
     console.error('getLocation error:', error)
+    throw error
   }
 }
 

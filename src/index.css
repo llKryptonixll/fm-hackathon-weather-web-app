@@ -121,6 +121,7 @@ body {
   --spacing-1000: calc(80px / var(--base-font) * 1rem);
   --spacing-800: calc(64px / var(--base-font) * 1rem);
   --spacing-600: calc(48px / var(--base-font) * 1rem);
+  --spacing-500: calc(40px / var(--base-font) * 1rem);
   --spacing-400: calc(32px / var(--base-font) * 1rem);
   --spacing-300: calc(24px / var(--base-font) * 1rem);
   --spacing-250: calc(20px / var(--base-font) * 1rem);

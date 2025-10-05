@@ -20,7 +20,6 @@ const MainWeatherCard = () => {
     weather_code,
     time,
   } = weather?.current || {}
-  console.log(selectedLocation)
 
   const itemStyles = `${isLoading && 'animate-pulse'} bg-neutral-800 p-250 flex-1 rounded-12 items-center grid gap-300 border-1 border-neutral-600 leading-none mobile:basis-0 basis-[calc(50%-0.888rem)`
   const bgClass = isLoading
