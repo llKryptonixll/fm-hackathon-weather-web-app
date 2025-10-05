@@ -63,7 +63,7 @@ body {
 @import 'tailwindcss';
 
 @theme {
-  /*colors*/
+  /* colors */
   --color-neutral-900: hsl(243, 96%, 9%);
   --color-neutral-800: hsl(243, 27%, 20%);
   --color-neutral-700: hsl(243, 23%, 24%);
@@ -75,75 +75,74 @@ body {
   --color-blue-500: hsl(233, 67%, 56%);
   --color-blue-700: hsl(248, 70%, 36%);
 
-  /* font family*/
+  /* font family */
   --font-DMsans: 'DM Sans', sans-serif;
   --font-Bricolage: 'Bricolage Grotesque', sans-serif;
 
-  /*font sizes*/
-
-  --text-preset-1: calc(96px / var(--base-font) * 1rem);
-  --text-preset-1--letter-spacing: calc(-2px / var(--base-font) * 1rem);
+  /* font sizes */
+  --text-preset-1: 5.333rem;
+  --text-preset-1--letter-spacing: -0.111rem;
   --text-preset-1--font-weight: 600;
 
-  --text-preset-2: calc(52px / var(--base-font) * 1rem);
+  --text-preset-2: 2.889rem;
   --text-preset-2--line-height: 1.2;
   --text-preset-2--font-weight: 700;
 
-  --text-preset-3: calc(32px / var(--base-font) * 1rem);
+  --text-preset-3: 1.778rem;
   --text-preset-3--font-weight: 300;
 
-  --text-preset-4: calc(28px / var(--base-font) * 1rem);
+  --text-preset-4: 1.556rem;
   --text-preset-4--line-height: 1.2;
   --text-preset-4--font-weight: 700;
 
-  --text-preset-5-semibold: calc(20px / var(--base-font) * 1rem);
+  --text-preset-5-semibold: 1.111rem;
   --text-preset-5-semibold--line-height: 1.2;
   --text-preset-5-semibold--font-weight: 600;
 
-  --text-preset-5-medium: calc(20px / var(--base-font) * 1rem);
+  --text-preset-5-medium: 1.111rem;
   --text-preset-5-medium--line-height: 1.2;
   --text-preset-5-medium--font-weight: 500;
 
-  --text-preset-6: calc(18px / var(--base-font) * 1rem);
+  --text-preset-6: 1rem;
   --text-preset-6--line-height: 1.2;
   --text-preset-6--font-weight: 500;
 
-  --text-preset-7: calc(16px / var(--base-font) * 1rem);
+  --text-preset-7: 0.889rem;
   --text-preset-7--line-height: 1.2;
   --text-preset-7--font-weight: 500;
 
-  --text-preset-8: calc(14px / var(--base-font) * 1rem);
+  --text-preset-8: 0.778rem;
   --text-preset-8--line-height: 1.2;
   --text-preset-8--font-weight: 500;
 
-  /*spacing*/
-  --spacing-1400: calc(112px / var(--base-font) * 1rem);
-  --spacing-1000: calc(80px / var(--base-font) * 1rem);
-  --spacing-800: calc(64px / var(--base-font) * 1rem);
-  --spacing-600: calc(48px / var(--base-font) * 1rem);
-  --spacing-500: calc(40px / var(--base-font) * 1rem);
-  --spacing-400: calc(32px / var(--base-font) * 1rem);
-  --spacing-300: calc(24px / var(--base-font) * 1rem);
-  --spacing-250: calc(20px / var(--base-font) * 1rem);
-  --spacing-200: calc(16px / var(--base-font) * 1rem);
-  --spacing-150: calc(12px / var(--base-font) * 1rem);
-  --spacing-125: calc(10px / var(--base-font) * 1rem);
-  --spacing-100: calc(8px / var(--base-font) * 1rem);
-  --spacing-75: calc(6px / var(--base-font) * 1rem);
-  --spacing-50: calc(4px / var(--base-font) * 1rem);
+  /* spacing */
+  --spacing-1400: 6.222rem;
+  --spacing-1000: 4.444rem;
+  --spacing-800: 3.556rem;
+  --spacing-600: 2.667rem;
+  --spacing-500: 2.222rem;
+  --spacing-400: 1.778rem;
+  --spacing-300: 1.333rem;
+  --spacing-250: 1.111rem;
+  --spacing-200: 0.889rem;
+  --spacing-150: 0.667rem;
+  --spacing-125: 0.556rem;
+  --spacing-100: 0.444rem;
+  --spacing-75: 0.333rem;
+  --spacing-50: 0.222rem;
 
   /* corner radius */
-  --radius-24: calc(24px / var(--base-font) * 1rem);
-  --radius-20: calc(20px / var(--base-font) * 1rem);
-  --radius-16: calc(16px / var(--base-font) * 1rem);
-  --radius-12: calc(12px / var(--base-font) * 1rem);
-  --radius-10: calc(10px / var(--base-font) * 1rem);
-  --radius-8: calc(8px / var(--base-font) * 1rem);
+  --radius-24: 1.333rem;
+  --radius-20: 1.111rem;
+  --radius-16: 0.889rem;
+  --radius-12: 0.667rem;
+  --radius-10: 0.556rem;
+  --radius-8: 0.444rem;
 
   /* breakpoints */
   --breakpoint-mobile: 550px;
 
-  /* animations*/
+  /* animations */
   --animate-spin-slow: spin 3s linear infinite;
 }
 
