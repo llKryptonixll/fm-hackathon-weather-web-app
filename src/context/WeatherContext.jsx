@@ -40,6 +40,14 @@ export function WeatherProvider({ children }) {
     localStorage.setItem('weather-now-city-favorites', JSON.stringify(newFavorites))
   }
 
+  function removeFavorite(currentFavorite) {
+    const newFavorites = favorites.filter((fav) => {
+      return fav !== currentFavorite
+    })
+    setFavorites(newFavorites)
+    localStorage.setItem('weather-now-city-favorites', JSON.stringify(newFavorites))
+  }
+
   async function fetchWeather() {
     if (!latitude || !longitude) return
     setIsLoading(true)
@@ -70,6 +78,7 @@ export function WeatherProvider({ children }) {
         refetchWeather: fetchWeather,
         addFavorites,
         checkIsFavorite,
+        removeFavorite,
         favorites,
       }}
     >
