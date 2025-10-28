@@ -1,6 +1,6 @@
 const SearchDropdown = ({ closeDropdown, locations, getSelectedLocation }) => {
   const searchDropdownStyles =
-    'custom-scrollbar bg-neutral-800 absolute top-16 w-full h-[184px] rounded-12 p-100 border-1 border-neutral-700 overflow-y-scroll'
+    'custom-scrollbar bg-neutral-800 absolute z-20 top-16 w-full h-[184px] rounded-12 p-100 border-1 border-neutral-700 overflow-y-scroll'
 
   function handleItemClick(location) {
     getSelectedLocation(location)

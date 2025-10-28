@@ -10,6 +10,35 @@ export function WeatherProvider({ children }) {
   const [isLoading, setIsLoading] = useState(false)
   const { name, country, latitude, longitude } = selectedLocation || {}
   const [weatherApiError, setWeatherApiError] = useState(null)
+  const [favorites, setFavorites] = useState(() => {
+    try {
+      const savedFavorites = localStorage.getItem('weather-now-city-favorites')
+      return savedFavorites ? JSON.parse(savedFavorites) : []
+    } catch (error) {
+      console.warn('Failed to parse tasks from localStorage:', error)
+      return []
+    }
+  })
+
+  function checkIsFavorite() {
+    if (!selectedLocation) return
+    const isFavorite = favorites.some(
+      (fav) => fav.latitude === selectedLocation.latitude && fav.longitude === selectedLocation.longitude,
+    )
+    return isFavorite
+  }
+
+  function addFavorites() {
+    // Toggles the current location in the favorites list: adds it if not present, removes it if already a favorite
+    const newFavorites = checkIsFavorite()
+      ? favorites.filter(
+          (fav) => fav.latitude !== selectedLocation.latitude && fav.longitude !== selectedLocation.longitude,
+        )
+      : [...favorites, selectedLocation]
+
+    setFavorites(newFavorites)
+    localStorage.setItem('weather-now-city-favorites', JSON.stringify(newFavorites))
+  }
 
   async function fetchWeather() {
     if (!latitude || !longitude) return
@@ -32,7 +61,17 @@ export function WeatherProvider({ children }) {
 
   return (
     <WeatherContext.Provider
-      value={{ name, country, weather, isLoading, weatherApiError, refetchWeather: fetchWeather }}
+      value={{
+        name,
+        country,
+        weather,
+        isLoading,
+        weatherApiError,
+        refetchWeather: fetchWeather,
+        addFavorites,
+        checkIsFavorite,
+        favorites,
+      }}
     >
       {children}
     </WeatherContext.Provider>

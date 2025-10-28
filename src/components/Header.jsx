@@ -1,5 +1,6 @@
 import UnitsDropdown from './layout/UnitsDropdown'
 import SearchDropdown from './layout/SearchDropdown'
+import FavoritesDropdown from './layout/FavoritesDropdown'
 import SearchLoader from './SearchLoader'
 import LocationContext from '../context/LocationContext'
 import WeatherContext from '../context/WeatherContext'
@@ -17,7 +18,7 @@ const Header = () => {
     checkResults,
     locationApiError,
   } = useContext(LocationContext)
-  const { weatherApiError } = useContext(WeatherContext)
+  const { weatherApiError, favorites } = useContext(WeatherContext)
   const [query, setQuery] = useState('')
 
   const { name, admin1, country } = selectedLocation || {}
@@ -74,6 +75,10 @@ const Header = () => {
             How's the sky looking today? <span className="sr-only">Use your personal Weather web app</span>
           </h1>
           <div className="mobile:flex-row flex w-full flex-col justify-center gap-200">
+            <div className="relative">
+              <button className="h-full cursor-pointer bg-red-200">Favorites</button>
+              <FavoritesDropdown favorites={favorites} getSelectedLocation={getSelectedLocation} />
+            </div>
             <div className="relative flex w-full gap-150 md:max-w-[478px]">
               <label className="sr-only" htmlFor="search-input">
                 {getPlaceholderText()}

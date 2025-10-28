@@ -7,8 +7,8 @@ export function LocationProvider({ children }) {
   const defaultLocation = {
     name: 'Berlin',
     country: 'Germany',
-    latitude: 52.52,
-    longitude: 13.405,
+    latitude: 52.52437,
+    longitude: 13.41053,
   }
 
   const [selectedLocation, setSelectedLocation] = useState(defaultLocation)
