@@ -15,7 +15,7 @@ const FavoritesDropdown = ({ favorites, getSelectedLocation, closeDropdown, remo
   return (
     <ul id="favorites-dropdown" className={FavoritesDropdownStyles}>
       {favorites.length === 0 ? (
-        <li className="text-neutral-0 m-auto">No favorites added</li>
+        <li className="text-neutral-0 text-center">No favorites added</li>
       ) : (
         favorites.map((fav) => {
           return (
