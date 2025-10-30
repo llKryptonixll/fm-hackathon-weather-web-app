@@ -21,7 +21,7 @@ const MainWeatherCard = () => {
     time,
   } = weather?.current || {}
 
-  const itemStyles = `${isLoading && 'animate-pulse'} bg-neutral-800 p-250 flex-1 rounded-12 items-center grid gap-300 border-1 border-neutral-600 leading-none mobile:basis-0 basis-[calc(50%-0.888rem)`
+  const itemStyles = `${isLoading && 'animate-pulse'} dark:bg-neutral-800 bg-neutral-300 p-250 flex-1 rounded-12 items-center grid gap-300 border-1 border-neutral-600 leading-none mobile:basis-0 basis-[calc(50%-0.888rem)]`
   const bgClass = isLoading
     ? 'bg-neutral-800 animate-pulse'
     : 'bg-[url(/assets/images/bg-today-small.svg)] bg-cover bg-center mobile:bg-[url(/assets/images/bg-today-large.svg)]'
@@ -82,26 +82,26 @@ const MainWeatherCard = () => {
       </div>
       <ul className="mobile:gap-250 flex flex-wrap justify-between gap-200 pt-400 md:gap-300">
         <li className={itemStyles}>
-          <p className="text-preset-6 text-nowrap text-neutral-200">Feels like</p>
+          <p className="text-preset-6 text-neutral-0 text-nowrap dark:text-neutral-200">Feels like</p>
           <p className="text-preset-3 text-neutral-0">
             {isLoading ? '-' : `${celsiusToFahrenheit(apparent_temperature, units.temperature)}°`}
           </p>
         </li>
         <li className={itemStyles}>
-          <p className="text-preset-6 text-neutral-200">Humidity</p>
+          <p className="text-preset-6 text-neutral-0 text-nowrap dark:text-neutral-200">Humidity</p>
           <p className="text-preset-3 text-neutral-0 mobile:text-nowrap text-wrap">
             {isLoading ? '-' : `${relative_humidity_2m} %`}
           </p>
         </li>
         <li className={itemStyles}>
-          <p className="text-preset-6 text-neutral-200">Wind</p>
+          <p className="text-preset-6 text-neutral-0 text-nowrap dark:text-neutral-200">Wind</p>
 
           <p className="text-preset-3 text-neutral-0 mobile:text-nowrap text-wrap">
             {isLoading ? '-' : `${kmhToMph(wind_speed_10m, units.windSpeed)} ${units.windSpeed}`}
           </p>
         </li>
         <li className={itemStyles}>
-          <p className="text-preset-6 text-neutral-200">Precipitation</p>
+          <p className="text-preset-6 text-neutral-0 text-nowrap dark:text-neutral-200">Precipitation</p>
 
           <p className="text-preset-3 text-neutral-0 mobile:text-nowrap text-wrap">
             {isLoading ? '-' : `${mmToIn(precipitation, units.precipitation)} ${units.precipitation}`}

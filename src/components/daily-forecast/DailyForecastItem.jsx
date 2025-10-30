@@ -7,7 +7,7 @@ import { useContext } from 'react'
 const DailyForecastItem = ({ date, minTemp, maxTemp, weatherCode, isLoading }) => {
   const { units } = useContext(UnitsContext)
   const itemStyles =
-    'rounded-12 mobile:basis-0 grid min-h-[165px] min-w-[90px] flex-1 basis-[30%] place-items-center gap-200 border-1 border-neutral-600 bg-neutral-800 px-125 py-200'
+    'rounded-12 mobile:basis-0 grid min-h-[165px] min-w-[90px] flex-1 basis-[30%] place-items-center gap-200 border-1 border-neutral-600 dark:bg-neutral-800 bg-neutral-300 px-125 py-200'
 
   return (
     <>
@@ -29,7 +29,7 @@ const DailyForecastItem = ({ date, minTemp, maxTemp, weatherCode, isLoading }) =
               {celsiusToFahrenheit(minTemp, units.temperature)}°
             </p>
             <p
-              className="text-preset-7 text-neutral-200"
+              className="text-preset-7 text-neutral-900 dark:text-neutral-200"
               aria-label={`Highest temperature: ${celsiusToFahrenheit(maxTemp, units.temperature)}°`}
             >
               {celsiusToFahrenheit(maxTemp, units.temperature)}°

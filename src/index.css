@@ -7,15 +7,7 @@ html {
 }
 
 body {
-  display: grid;
   font-size: 1rem;
-  place-items: center;
-  background-color: hsl(243, 96%, 9%);
-}
-
-#root {
-  max-width: 1440px;
-  width: 100%;
 }
 
 @font-face {
@@ -61,6 +53,8 @@ body {
 }
 
 @import 'tailwindcss';
+
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 @theme {
   /* colors */
