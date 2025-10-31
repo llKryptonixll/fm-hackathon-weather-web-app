@@ -113,7 +113,7 @@ const Header = ({ theme, switchTheme }) => {
             <div className="relative">
               <button
                 onClick={() => toggleDropdown('favorites-dropdown')}
-                className="rounded-12 focus:outline-neutral-0 text-neutral-0 flex h-full cursor-pointer items-center gap-125 bg-neutral-800 px-300 py-200 transition-colors hover:bg-neutral-700 focus:border-2 focus:border-neutral-900 focus:outline-2"
+                className="rounded-12 focus:outline-neutral-0 text-neutral-0 relative flex h-full cursor-pointer items-center gap-125 bg-neutral-800 px-300 py-200 transition-colors hover:bg-neutral-700 focus:border-2 focus:border-neutral-900 focus:outline-2"
               >
                 <svg width="24px" height="24px" viewBox="6.5 6 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path
