@@ -9,7 +9,7 @@ const HourlyForecastItem = ({ time, weatherCode, temperature, isLoading }) => {
   return (
     <li
       aria-busy={isLoading}
-      className={`${isLoading ? 'animate-pulse' : ''} rounded-8 flex min-h-[60px] items-center justify-between border-1 border-neutral-600 bg-neutral-700 py-[10px] pr-200 pl-150`}
+      className={`${isLoading ? 'animate-pulse' : ''} rounded-8 flex min-h-[60px] items-center justify-between border-1 border-neutral-600 bg-neutral-400 py-[10px] pr-200 pl-150 dark:bg-neutral-700`}
     >
       {isLoading ? (
         <p className="sr-only">Loading...</p>

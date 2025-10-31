@@ -49,7 +49,11 @@ export function LocationProvider({ children }) {
     }
 
     if (!locations.results || locations.results.length === 0) {
-      return <p className="text-neutral-0 text-preset-4 justify-self-center">No search result found!</p>
+      return (
+        <p className="dark:text-neutral-0 text-preset-4 justify-self-center text-neutral-900">
+          No search result found!
+        </p>
+      )
     }
   }
 

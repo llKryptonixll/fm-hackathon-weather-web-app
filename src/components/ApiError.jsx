@@ -23,8 +23,10 @@ const ApiError = ({ refetchWeather, refetchLocation, weatherApiError, locationAp
   return (
     <main className="grid place-items-center gap-300 pt-800 text-center">
       <img className="mt-500 h-[50px] w-[42px]" src="/assets/images/icon-error.svg" alt="Api Error" />
-      <h1 className="sm:text-preset-2 text-preset-4 text-neutral-0 font-Bricolage">Something went wrong</h1>
-      <p className="sm:text-preset-5-medium text-preset-7 max-w-[550px] text-neutral-200">
+      <h1 className="sm:text-preset-2 text-preset-4 dark:text-neutral-0 font-Bricolage text-neutral-900">
+        Something went wrong
+      </h1>
+      <p className="sm:text-preset-5-medium text-preset-7 max-w-[550px] text-neutral-700 dark:text-neutral-200">
         We couldn’t connect to the server ({weatherApiError?.message || locationApiError?.message}). Please try again in
         a few moments.
       </p>
