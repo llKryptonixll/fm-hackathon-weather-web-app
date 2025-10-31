@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect, useContext } from 'react'
+import useLocalStorage from '../hooks/useLocalStorage'
 import getWeather from '../services/getWeather'
 import LocationContext from './LocationContext'
 
@@ -10,15 +11,7 @@ export function WeatherProvider({ children }) {
   const [isLoading, setIsLoading] = useState(false)
   const { name, country, latitude, longitude } = selectedLocation || {}
   const [weatherApiError, setWeatherApiError] = useState(null)
-  const [favorites, setFavorites] = useState(() => {
-    try {
-      const savedFavorites = localStorage.getItem('weather-now-city-favorites')
-      return savedFavorites ? JSON.parse(savedFavorites) : []
-    } catch (error) {
-      console.warn('Failed to parse tasks from localStorage:', error)
-      return []
-    }
-  })
+  const [favorites, setFavorites] = useLocalStorage('weather-now-city-favorites', [])
 
   function checkIsFavorite() {
     if (!selectedLocation) return
@@ -37,7 +30,6 @@ export function WeatherProvider({ children }) {
       : [...favorites, selectedLocation]
 
     setFavorites(newFavorites)
-    localStorage.setItem('weather-now-city-favorites', JSON.stringify(newFavorites))
   }
 
   function removeFavorite(currentFavorite) {
@@ -45,7 +37,6 @@ export function WeatherProvider({ children }) {
       return fav !== currentFavorite
     })
     setFavorites(newFavorites)
-    localStorage.setItem('weather-now-city-favorites', JSON.stringify(newFavorites))
   }
 
   async function fetchWeather() {

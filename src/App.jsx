@@ -4,13 +4,14 @@ import { LocationProvider } from './context/LocationContext'
 import { WeatherProvider } from './context/WeatherContext'
 import { UnitsProvider } from './context/UnitsContext'
 import { DropdownProvider } from './context/DropdownContext'
-import { useState } from 'react'
+import useLocalStorage from './hooks/useLocalStorage'
 
 function App() {
-  const [theme, setTheme] = useState('dark')
+  const [theme, setTheme] = useLocalStorage('weather-now-theme', 'dark')
 
   const switchTheme = () => {
-    setTheme(theme === 'dark' ? 'light' : 'dark')
+    const newTheme = theme === 'dark' ? 'light' : 'dark'
+    setTheme(newTheme)
   }
 
   return (
