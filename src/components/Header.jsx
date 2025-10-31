@@ -122,6 +122,11 @@ const Header = ({ theme, switchTheme }) => {
                   />
                 </svg>
                 <span>Favorites</span>
+                {favorites.length !== 0 && (
+                  <div className="text-preset-8 absolute -top-1 -right-1 grid h-[18px] w-[18px] place-items-center rounded-full bg-blue-500 leading-2">
+                    {favorites.length}
+                  </div>
+                )}
               </button>
               {dropdown === 'favorites-dropdown' && (
                 <FavoritesDropdown
